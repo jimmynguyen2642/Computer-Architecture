@@ -52,6 +52,10 @@ add wave -hex -r /stimulus/*
 #add wave -hex /stimulus/dut/mips/dp/rf/*
 #add wave -hex /stimulus/dut/mips/dp/rf/rf
 #add list -hex -r /stimulus/*
+#add wave -hex -r /stimulus/dut/*
+#add wave -hex -r /stimulus/dut/rf
+#add wave -hex -r /stimulus/dut/rf/*
+
 #add log -hex -r /*
 
 -- Set Wave Output Items 

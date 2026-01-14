@@ -27,6 +27,7 @@ module stimulus ();
     // helper: set read addresses for regfile
     task automatic set_reads(input logic [4:0] a1, input logic [4:0] a2);
     begin
+      @(negedge clk);
       ra1 = a1;
       ra2 = a2;
       #1; // allow combinational settle
@@ -73,14 +74,14 @@ module stimulus ();
     end
 
     // Test 2: basic write + readback
-    write_reg(5'd5, 32'hAAAAAAA);
+    write_reg(5'd5, 32'hAAAAAAAA);
     set_reads(5'd5, 5'd0);
-    assert(rd1 == 32'hAAAAAAA) else $fatal("FAIL: r5 readback wrong");
+    assert(rd1 == 32'hAAAAAAAA) else $fatal("FAIL: r5 readback wrong");
     assert(rd2 == 32'd0)        else $fatal("FAIL: x0 not 0");
 
     // Test 3: read same reg on both ports
     set_reads(5'd5, 5'd5);
-    assert(rd1 == 32'hAAAAAAA && rd2 == 32'hAAAAAAA)
+    assert(rd1 == 32'hAAAAAAAA && rd2 == 32'hAAAAAAAA)
         else $fatal("FAIL: dual read wrong");
 
     // Test 4: write enable gating (we3=0 should not write)
