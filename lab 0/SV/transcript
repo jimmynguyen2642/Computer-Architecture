@@ -1,16 +1,16 @@
 # do regfile.do
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:52:55 on Jan 14,2026
+# Start time: 14:03:31 on Jan 14,2026
 # vlog -reportprogress 300 -sv regfile.sv tb_regfile.sv 
 # -- Compiling module regfile
 # -- Compiling module stimulus
 # 
 # Top level modules:
 # 	stimulus
-# End time: 13:52:55 on Jan 14,2026, Elapsed time: 0:00:00
+# End time: 14:03:32 on Jan 14,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # vsim -voptargs="+acc" work.stimulus 
-# Start time: 13:52:56 on Jan 14,2026
+# Start time: 14:03:32 on Jan 14,2026
 # Loading sv_std.std
 # Loading work.stimulus
 # Loading work.regfile
@@ -18,6 +18,12 @@
 # .main_pane.wave.interior.cs.body.pw.wf
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 #           File in use by: JMAMA  Hostname: DESKTOP-06F4FTN  ProcessID: 22540
-#           Attempting to use alternate WLF file "./wlftajhi6m".
+#           Attempting to use alternate WLF file "./wlftm4zvs7".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftajhi6m
+#           Using alternate file: ./wlftm4zvs7
+# TB START 0
+# All regfile tests passed. TB FINISH 377
+# ** Note: $finish    : tb_regfile.sv(114)
+#    Time: 377 ps  Iteration: 0  Instance: /stimulus
+# 1
+# Break in Module stimulus at tb_regfile.sv line 114
