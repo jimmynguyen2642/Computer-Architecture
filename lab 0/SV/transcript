@@ -1,29 +1,23 @@
-# do fsm.do
+# do regfile.do
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:15:07 on Jan 14,2026
-# vlog -reportprogress 300 fsm.sv tb_fsm.sv 
-# -- Compiling module fsm
+# Start time: 13:52:55 on Jan 14,2026
+# vlog -reportprogress 300 -sv regfile.sv tb_regfile.sv 
+# -- Compiling module regfile
 # -- Compiling module stimulus
 # 
 # Top level modules:
 # 	stimulus
-# End time: 10:15:07 on Jan 14,2026, Elapsed time: 0:00:00
+# End time: 13:52:55 on Jan 14,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vsim -voptargs="+acc" work.stimulus 
-# Start time: 10:15:09 on Jan 14,2026
+# Start time: 13:52:56 on Jan 14,2026
 # Loading sv_std.std
 # Loading work.stimulus
-# Loading work.fsm
+# Loading work.regfile
 # .main_pane.list.interior.cs.body
 # .main_pane.wave.interior.cs.body.pw.wf
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 #           File in use by: JMAMA  Hostname: DESKTOP-06F4FTN  ProcessID: 22540
-#           Attempting to use alternate WLF file "./wlftrxstgx".
+#           Attempting to use alternate WLF file "./wlftajhi6m".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftrxstgx
-# ** Note: $finish    : tb_fsm.sv(27)
-#    Time: 500 ps  Iteration: 0  Instance: /stimulus
-# 1
-# Break in Module stimulus at tb_fsm.sv line 27
-# End time: 10:16:05 on Jan 14,2026, Elapsed time: 0:00:56
-# Errors: 0, Warnings: 2
+#           Using alternate file: ./wlftajhi6m
