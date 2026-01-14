@@ -73,14 +73,14 @@ module stimulus ();
     end
 
     // Test 2: basic write + readback
-    write_reg(5'd5, 32'hDEADBEEF);
+    write_reg(5'd5, 32'hAAAAAAA);
     set_reads(5'd5, 5'd0);
-    assert(rd1 == 32'hDEADBEEF) else $fatal("FAIL: r5 readback wrong");
+    assert(rd1 == 32'hAAAAAAA) else $fatal("FAIL: r5 readback wrong");
     assert(rd2 == 32'd0)        else $fatal("FAIL: x0 not 0");
 
     // Test 3: read same reg on both ports
     set_reads(5'd5, 5'd5);
-    assert(rd1 == 32'hDEADBEEF && rd2 == 32'hDEADBEEF)
+    assert(rd1 == 32'hAAAAAAA && rd2 == 32'hAAAAAAA)
         else $fatal("FAIL: dual read wrong");
 
     // Test 4: write enable gating (we3=0 should not write)

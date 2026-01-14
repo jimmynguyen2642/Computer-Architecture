@@ -10,11 +10,11 @@ cModel Technology
 Z0 dC:/Users/JMAMA/Documents/Computer Architecture/lab 0/SV
 vregfile
 Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-Z2 !s110 1768421012
+!s110 1768421664
 !i10b 1
 !s100 9cYM<FZPi4W4`KNEAF[WB1
 I<k>G;6Q3EI[FbZ^SM[WJ90
-Z3 VDg1SIo80bB@j0V0VzS_@n1
+Z2 VDg1SIo80bB@j0V0VzS_@n1
 !s105 regfile_sv_unit
 S1
 R0
@@ -22,37 +22,37 @@ w1768419466
 8regfile.sv
 Fregfile.sv
 L0 1
-Z4 OV;L;10.5b;63
+Z3 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z5 !s108 1768421011.000000
-Z6 !s107 tb_regfile.sv|regfile.sv|
-Z7 !s90 -reportprogress|300|-sv|regfile.sv|tb_regfile.sv|
+Z4 !s108 1768421664.000000
+Z5 !s107 tb_regfile.sv|regfile.sv|
+Z6 !s90 -reportprogress|300|-sv|regfile.sv|tb_regfile.sv|
 !i113 1
 o-sv
-Z8 tCvgOpt 0
+Z7 tCvgOpt 0
 vstimulus
 R1
-R2
+!s110 1768421665
 !i10b 1
-!s100 =bTCbj04hZ`92Zn39NCa=3
-Ibi>hH7NJ`SdhBg2GW_A[B3
-R3
+!s100 Uca_KB7i6aake2WG]Vk8:3
+ImYT2UYVbX:d8G>_E9jlQY3
+R2
 !s105 tb_regfile_sv_unit
 S1
 R0
-w1768420918
+w1768421620
 8tb_regfile.sv
 Ftb_regfile.sv
 L0 1
-R4
+R3
 r1
 !s85 0
 31
+R4
 R5
 R6
-R7
 !i113 1
 o-sv
-R8
+R7
