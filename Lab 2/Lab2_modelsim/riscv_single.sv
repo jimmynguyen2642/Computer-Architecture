@@ -25,6 +25,8 @@
 //   sw           0100011   010       immediate
 //   jal          1101111   immediate immediate
 
+// Need to create the beg, bgeu, blt, bltu, bne, ja;r, lb, lbu, lh, lhu, lui, sb, sh, sll, slli, sltiu, sltu, sra, srai, srl, srli, xor, xori
+
 module testbench();
 
    logic        clk;
