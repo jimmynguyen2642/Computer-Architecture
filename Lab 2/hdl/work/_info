@@ -10,7 +10,7 @@ cModel Technology
 Z0 dC:/Users/JMAMA/Documents/Computer Architecture/Lab 2/hdl
 vadder
 Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-Z2 !s110 1774452764
+Z2 !s110 1774466389
 !i10b 1
 !s100 mG`>]CQ_nYA3kn>9Fe@Lb3
 I?7mWNnGV3VU=;=G9PDU[81
@@ -18,7 +18,7 @@ Z3 VDg1SIo80bB@j0V0VzS_@n1
 Z4 !s105 riscv_single_sv_unit
 S1
 R0
-Z5 w1774452730
+Z5 w1774466381
 Z6 8riscv_single.sv
 Z7 Friscv_single.sv
 L0 209
@@ -26,7 +26,7 @@ Z8 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z9 !s108 1774452764.000000
+Z9 !s108 1774466389.000000
 Z10 !s107 riscv_single.sv|
 Z11 !s90 -reportprogress|300|riscv_single.sv|
 !i113 1
@@ -81,8 +81,8 @@ vcontroller
 R1
 R2
 !i10b 1
-!s100 QoXb:@jY?fJNThhLAVD8`3
-Ia]?l5<cfRB^M66FGX845`0
+!s100 Xz8nd5TbeaEC^gBa0AUbc0
+I=m8P]57`ez76D2mVQn@LA3
 R3
 R4
 S1
@@ -127,8 +127,8 @@ vdmem
 R1
 R2
 !i10b 1
-!s100 h1SaYc7A5bZUIgeNW5c?W3
-I8=]k7eddAYo?ee5a_E6m[3
+!s100 ?BFQTOUlTbh@<ccM01D0V3
+IigUAK9fP`cD:X8io8hYel1
 R3
 R4
 S1
@@ -219,8 +219,8 @@ vimem
 R1
 R2
 !i10b 1
-!s100 65`j8NMd<R?zgkbWFG0fo2
-IEFBl;9PV=jE`8=I^<8@SO2
+!s100 [OOmTRbh]O4LNLUJR^^l>3
+Ig;2KLghVDXhCUJk4^UboM1
 R3
 R4
 S1
@@ -242,8 +242,8 @@ vmaindec
 R1
 R2
 !i10b 1
-!s100 N@UU9]j@njOb4k:VY<DmK2
-IG64XP49XcBeVjNgD`1eZT2
+!s100 z5V?9cXz>dkDO8m]`nf7m1
+ISRzP=LeGgMAT5`OOnWX`@2
 R3
 R4
 S1
@@ -334,8 +334,8 @@ vriscvsingle
 R1
 R2
 !i10b 1
-!s100 5gaZ`<1Z<I2@7Tmb<8C^z2
-I=Y^0oaOUnbnR5L@EP7Zmj1
+!s100 em:UdFDOD1zSj^L_F25>12
+IQZg2JmHcgm<C3I44nakTA1
 R3
 R4
 S1
@@ -357,8 +357,8 @@ vtestbench
 R1
 R2
 !i10b 1
-!s100 7Hl7B0gz`oZ=F:;;dbUD`0
-I12gBgkn5G0@jZcQdbfaID1
+!s100 OGkTU4mHAbh]J?SbY;Nc40
+Id39z`Gk0ea^MC@2lRnbBe0
 R3
 R4
 S1

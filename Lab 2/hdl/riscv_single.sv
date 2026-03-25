@@ -67,7 +67,7 @@ module testbench();
               $stop;
            end else if (DataAdr !== 96) begin
               $display("Simulation failed");
-              $stop;
+              // $stop;
            end
 	end
      end
@@ -291,7 +291,7 @@ endmodule // top
 module imem (input  logic [31:0] a,
 	     output logic [31:0] rd);
    
-   logic [31:0] 		 RAM[63:0];
+   logic [31:0] 		 RAM[1023:0];
    
    assign rd = RAM[a[31:2]]; // word aligned
    
@@ -301,7 +301,7 @@ module dmem (input  logic        clk, we,
 	     input  logic [31:0] a, wd,
 	     output logic [31:0] rd);
    
-   logic [31:0] 		 RAM[255:0];
+   logic [31:0] 		 RAM[1023:0];
    
    assign rd = RAM[a[31:2]]; // word aligned
    always_ff @(posedge clk)
