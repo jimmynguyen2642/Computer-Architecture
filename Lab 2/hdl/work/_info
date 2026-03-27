@@ -10,23 +10,23 @@ cModel Technology
 Z0 dC:/Users/JMAMA/Documents/Computer Architecture/Lab 2/hdl
 vadder
 Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-Z2 !s110 1774466389
+Z2 !s110 1774467276
 !i10b 1
-!s100 mG`>]CQ_nYA3kn>9Fe@Lb3
-I?7mWNnGV3VU=;=G9PDU[81
+!s100 AzZ`[VdAPILU`>]UA<=9>1
+I`P=S4lcTIf>:Ii;JKTM9h0
 Z3 VDg1SIo80bB@j0V0VzS_@n1
 Z4 !s105 riscv_single_sv_unit
 S1
 R0
-Z5 w1774466381
+Z5 w1774467262
 Z6 8riscv_single.sv
 Z7 Friscv_single.sv
-L0 209
+L0 212
 Z8 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z9 !s108 1774466389.000000
+Z9 !s108 1774467276.000000
 Z10 !s107 riscv_single.sv|
 Z11 !s90 -reportprogress|300|riscv_single.sv|
 !i113 1
@@ -35,8 +35,8 @@ valu
 R1
 R2
 !i10b 1
-!s100 GAJ>LK[dhl;=S`G`J<gRW3
-I6[ANKa8_ndSG>_`VCz7YG0
+!s100 b0d:^@YeAg`Hm5?oTmcSf3
+IS35QLzNl?md=]4@lf]TAD1
 R3
 R4
 S1
@@ -44,7 +44,7 @@ R0
 R5
 R6
 R7
-L0 312
+L0 315
 R8
 r1
 !s85 0
@@ -58,8 +58,8 @@ valudec
 R1
 R2
 !i10b 1
-!s100 jj]BLmXk:PTAJFTKLW_<U3
-I<X3]O@:X3FZU3md@=d0So1
+!s100 9jC>H[TbMMNc2P@G`jQ:W3
+IDPHh9BI4:J9]Ua_kVK22b3
 R3
 R4
 S1
@@ -67,30 +67,7 @@ R0
 R5
 R6
 R7
-L0 148
-R8
-r1
-!s85 0
-31
-R9
-R10
-R11
-!i113 1
-R12
-vcontroller
-R1
-R2
-!i10b 1
-!s100 Xz8nd5TbeaEC^gBa0AUbc0
-I=m8P]57`ez76D2mVQn@LA3
-R3
-R4
-S1
-R0
-R5
-R6
-R7
-L0 99
+L0 150
 R8
 r1
 !s85 0
@@ -104,8 +81,8 @@ vdatapath
 R1
 R2
 !i10b 1
-!s100 44F77J2hfdo:g=Wmnn7lZ2
-Io1T1`c50c>LN5E3F4G4n[0
+!s100 2PONY2>i_KKTR;iF[ef9m0
+IlXNIjiY2jOMT6ULzISgZe1
 R3
 R4
 S1
@@ -113,7 +90,7 @@ R0
 R5
 R6
 R7
-L0 176
+L0 178
 R8
 r1
 !s85 0
@@ -127,8 +104,8 @@ vdmem
 R1
 R2
 !i10b 1
-!s100 ?BFQTOUlTbh@<ccM01D0V3
-IigUAK9fP`cD:X8io8hYel1
+!s100 dK67j?eZVZ<foKV8PQeR`0
+IMnk6bfCV>_jza6mkJz=KR2
 R3
 R4
 S1
@@ -136,7 +113,7 @@ R0
 R5
 R6
 R7
-L0 300
+L0 303
 R8
 r1
 !s85 0
@@ -150,8 +127,8 @@ vextend
 R1
 R2
 !i10b 1
-!s100 4oYGC:HAlR6VnX:[9[90Q2
-I9nkERHU[bTegkEZ6KZdkS3
+!s100 MYae;BBP741NI@D[ZF<kK3
+I9oV^HC8B575@ELS0iGHXn3
 R3
 R4
 S1
@@ -159,7 +136,7 @@ R0
 R5
 R6
 R7
-L0 216
+L0 219
 R8
 r1
 !s85 0
@@ -173,8 +150,8 @@ vflopenr
 R1
 R2
 !i10b 1
-!s100 OQQYA_mc;EnMj82Se_]2M3
-I@;cgI7Da3_]oHJFlSZ?=U1
+!s100 26n]kTX3ADUU=7]E>WhF`1
+ILcZgh0E>YClm?aQzD5BLO1
 R3
 R4
 S1
@@ -182,7 +159,7 @@ R0
 R5
 R6
 R7
-L0 248
+L0 251
 R8
 r1
 !s85 0
@@ -196,8 +173,8 @@ vflopr
 R1
 R2
 !i10b 1
-!s100 gVdjK;1o_C^JLJR9Z>@AO3
-IE`_66d]dROiXfRIe63JLj3
+!s100 [Kf@dcXb<lo8TV>Bc9@cE0
+I@Z81U9;4IH`Z>6@]L0O3S1
 R3
 R4
 S1
@@ -205,7 +182,7 @@ R0
 R5
 R6
 R7
-L0 237
+L0 240
 R8
 r1
 !s85 0
@@ -219,8 +196,8 @@ vimem
 R1
 R2
 !i10b 1
-!s100 [OOmTRbh]O4LNLUJR^^l>3
-Ig;2KLghVDXhCUJk4^UboM1
+!s100 PZCIc;kKHQMdB03SO`WnO2
+IBU44M9C87ED6>n<T2HV@43
 R3
 R4
 S1
@@ -228,7 +205,7 @@ R0
 R5
 R6
 R7
-L0 291
+L0 294
 R8
 r1
 !s85 0
@@ -242,8 +219,8 @@ vmaindec
 R1
 R2
 !i10b 1
-!s100 z5V?9cXz>dkDO8m]`nf7m1
-ISRzP=LeGgMAT5`OOnWX`@2
+!s100 z5VCgFkU<@eD`AU::AOi[0
+IamTRM12@NgG=R_Z0H;@lM2
 R3
 R4
 S1
@@ -251,7 +228,7 @@ R0
 R5
 R6
 R7
-L0 120
+L0 122
 R8
 r1
 !s85 0
@@ -265,8 +242,8 @@ vmux2
 R1
 R2
 !i10b 1
-!s100 [K<5O1=mIo:X=b_DKJE`K1
-ITOP1gU`n3ni=T_hELDboJ1
+!s100 o1>n1mcITgWRE9>V>FOG=1
+I6n`K_MTlnbOIUn:ZRl?<N0
 R3
 R4
 S1
@@ -274,7 +251,7 @@ R0
 R5
 R6
 R7
-L0 259
+L0 262
 R8
 r1
 !s85 0
@@ -288,8 +265,8 @@ vmux3
 R1
 R2
 !i10b 1
-!s100 D^A?5T?1ZEQ_EV7_MSj^A0
-IX0XVX`R9948CBS0b=_@mC2
+!s100 J8hVoFN=TMV32`F@ai6iE1
+IUHD0XFS>WjK@OE^Zjk=6U1
 R3
 R4
 S1
@@ -297,7 +274,7 @@ R0
 R5
 R6
 R7
-L0 268
+L0 271
 R8
 r1
 !s85 0
@@ -311,8 +288,8 @@ vregfile
 R1
 R2
 !i10b 1
-!s100 dQPVRe?;WAJ1HIY9QfSML0
-I1ZCJY9LEQm5TAHnI0=fJQ2
+!s100 ^kBoPMDNzAJHEMU5Y^i612
+If@>gR;M6]:I]ELoPoIFUZ1
 R3
 R4
 S1
@@ -320,7 +297,7 @@ R0
 R5
 R6
 R7
-L0 342
+L0 351
 R8
 r1
 !s85 0
@@ -334,8 +311,8 @@ vriscvsingle
 R1
 R2
 !i10b 1
-!s100 em:UdFDOD1zSj^L_F25>12
-IQZg2JmHcgm<C3I44nakTA1
+!s100 mT80f?D6UfXWhCSUd@0Um1
+IcH;P8EX^E2THPB8Jj_JNh1
 R3
 R4
 S1
@@ -357,8 +334,8 @@ vtestbench
 R1
 R2
 !i10b 1
-!s100 OGkTU4mHAbh]J?SbY;Nc40
-Id39z`Gk0ea^MC@2lRnbBe0
+!s100 cLXHP9BJBX?jD7h091RYD2
+I>mV`Lgi]@=AQZMg<V`I9Q3
 R3
 R4
 S1
@@ -380,8 +357,8 @@ vtop
 R1
 R2
 !i10b 1
-!s100 @Ue2B[b8P42zCG8m<bAWb1
-ID;R40W?`9YghgZoY5lOT[0
+!s100 RS<TTma?O><RgmcF2=gJS0
+IOTJX1T7mg[<QNfgNP?;1P3
 R3
 R4
 S1
@@ -389,7 +366,7 @@ R0
 R5
 R6
 R7
-L0 277
+L0 280
 R8
 r1
 !s85 0

@@ -41,7 +41,7 @@ module testbench();
      begin
 	string memfilename;
         // memfilename = {"../riscvtest/riscvtest.memfile"};
-        memfilename = {"../testing/bne.memfile"};
+        memfilename = {"../testing/blt.memfile"};
         $readmemh(memfilename, dut.imem.RAM);
      end
 
@@ -80,19 +80,19 @@ module riscvsingle (input  logic        clk, reset,
 		    output logic [31:0] ALUResult, WriteData,
 		    input  logic [31:0] ReadData);
    
-   logic 				ALUSrc, RegWrite, Jump, Zero;
+   logic 				ALUSrc, RegWrite, Jump, Zero, lt, ltu;
    logic [1:0] 				ResultSrc;
    logic [2:0] 				ALUControl, ImmSrc;
    
    controller c (Instr[6:0], Instr[14:12], Instr[30], Zero,
 		 ResultSrc, MemWrite, PCSrc,
 		 ALUSrc, RegWrite, Jump,
-		 ImmSrc, ALUControl);
+		 ImmSrc, ALUControl, lt, ltu);
    datapath dp (clk, reset, ResultSrc, PCSrc,
 		ALUSrc, RegWrite,
 		ImmSrc, ALUControl,
 		Zero, PC, Instr,
-		ALUResult, WriteData, ReadData);
+		ALUResult, WriteData, ReadData, lt, ltu);
    
 endmodule // riscvsingle
 
@@ -105,7 +105,9 @@ module controller (input  logic [6:0] op,
 		   output logic       PCSrc, ALUSrc,
 		   output logic       RegWrite, Jump,
 		   output logic [2:0] ImmSrc,
-		   output logic [2:0] ALUControl);
+		   output logic [2:0] ALUControl,
+       input  logic       lt,
+       input  logic       ltu);
    
    logic [1:0] 			      ALUOp;
    logic 			      Branch;
@@ -113,7 +115,11 @@ module controller (input  logic [6:0] op,
    maindec md (op, ResultSrc, MemWrite, Branch,
 	       ALUSrc, RegWrite, Jump, ImmSrc, ALUOp);
    aludec ad (op[5], funct3, funct7b5, ALUOp, ALUControl);
-   assign PCSrc = Branch & ((Zero ^ funct3[0]) & (!funct3[2] ^ !funct3[1])) | Jump;
+  //  assign PCSrc = Branch & ((Zero ^ funct3[0]) & (!funct3[2] ^ !funct3[1])) | 
+  //                 ((funct3[2] & !funct3[1]) & (funct3[0] ^ lt)) | Jump;
+    assign PCSrc = Branch & ((Zero ^ funct3[0]) & (!funct3[2] ^ !funct3[1])) | 
+                    ((funct3[2] & !funct3[1]) & (funct3[0] ^ lt)) | 
+                    ((funct3[2] & funct3[1]) & (funct3[0] ^ ltu)) | Jump;
    
 endmodule // controller
 
@@ -183,7 +189,9 @@ module datapath (input  logic        clk, reset,
 		 output logic [31:0] PC,
 		 input  logic [31:0] Instr,
 		 output logic [31:0] ALUResult, WriteData,
-		 input  logic [31:0] ReadData);
+		 input  logic [31:0] ReadData,
+     output logic        lt,
+     output logic        ltu);
    
    logic [31:0] 		     PCNext, PCPlus4, PCTarget;
    logic [31:0] 		     ImmExt;
@@ -201,7 +209,7 @@ module datapath (input  logic        clk, reset,
    extend  ext (Instr[31:7], ImmSrc, ImmExt);
    // ALU logic
    mux2 #(32)  srcbmux (WriteData, ImmExt, ALUSrc, SrcB);
-   alu  alu (SrcA, SrcB, ALUControl, ALUResult, Zero);
+   alu  alu (SrcA, SrcB, ALUControl, ALUResult, Zero, lt, ltu);
    mux3 #(32) resultmux (ALUResult, ReadData, PCPlus4,ResultSrc, Result);
 
 endmodule // datapath
@@ -312,14 +320,22 @@ endmodule // dmem
 module alu (input  logic [31:0] a, b,
             input  logic [2:0] 	alucontrol,
             output logic [31:0] result,
-            output logic 	zero);
+            output logic 	zero,
+            output logic  lt,
+            output logic  ltu);
 
    logic [31:0] 	       condinvb, sum;
+   logic [32:0]          fullsum;
+   logic           cout; 
    logic 		       v;              // overflow
    logic 		       isAddSub;       // true when is add or subtract operation
 
    assign condinvb = alucontrol[0] ? ~b : b;
-   assign sum = a + condinvb + alucontrol[0];
+  //  assign sum = a + condinvb + alucontrol[0];
+   assign fullsum = {1'b0, a} + {1'b0, condinvb} + alucontrol[0];
+   assign sum = fullsum[31:0];
+   assign cout = fullsum[32];
+   assign ltu = ~cout;
    assign isAddSub = ~alucontrol[2] & ~alucontrol[1] |
                      ~alucontrol[1] & alucontrol[0];   
 
@@ -334,7 +350,12 @@ module alu (input  logic [31:0] a, b,
        default: result = 32'bx;
      endcase
 
+   logic neg, asign, bsign;
    assign zero = (result == 32'b0);
+   assign neg = result[31];
+   assign asign = a[31];
+   assign bsign = b[31];
+   assign lt = (asign & ~bsign) | (asign & neg) | (~bsign & neg);
    assign v = ~(alucontrol[0] ^ a[31] ^ b[31]) & (a[31] ^ sum[31]) & isAddSub;
    
 endmodule // alu
