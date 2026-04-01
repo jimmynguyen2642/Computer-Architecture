@@ -40,9 +40,8 @@ module testbench();
    initial
      begin
 	string memfilename;
-        // memfilename = {"../riscvtest/riscvtest.memfile"};
-        // memfilename = {"../testing/blt.memfile"};
-        memfilename = {"../testing/auipc.memfile"};
+        memfilename = {"../riscvtest/riscvtest.memfile"};
+        // memfilename = {"../testing/sh.memfile"};
         $readmemh(memfilename, dut.imem.RAM);
      end
 
@@ -91,11 +90,16 @@ module riscvsingle (input  logic        clk, reset,
 		 ResultSrc, MemWrite, 
 		 ALUSrc, ASrc, RegWrite, Jump,
 		 ImmSrc, ALUControl, lt, ltu, PCSel);
-   datapath dp (clk, reset, ResultSrc, PCSel,
-		ALUSrc, ASrc, RegWrite,
-		ImmSrc, ALUControl,
-		Zero, PC, Instr,
-		ALUResult, WriteData, ReadData, lt, ltu);
+  //  datapath dp (clk, reset, ResultSrc, PCSel,
+	// 	ALUSrc, ASrc, RegWrite,
+	// 	ImmSrc, ALUControl,
+	// 	Zero, PC, Instr,
+	// 	ALUResult, WriteData, ReadData, lt, ltu);
+    datapath dp (clk, reset, ResultSrc, PCSel,
+      ALUSrc, ASrc, RegWrite,
+      ImmSrc, Instr[14:12], ALUControl,
+      Zero, PC, Instr,
+      ALUResult, WriteData, ReadData, lt, ltu);
    
 endmodule // riscvsingle
 
@@ -166,7 +170,7 @@ module maindec (input  logic [6:0] op,
        7'b0110111: controls = 13'b1_100_0_1_0_00_0_11_0; // lui
        7'b1100011: controls = 13'b0_010_0_0_0_00_1_01_0; // branch
        7'b1101111: controls = 13'b1_011_0_0_0_10_0_00_1; // jal
-       7'b1100111: controls = 13'b1_000_0_0_0_00_0_10_1; // jalr
+       7'b1100111: controls = 13'b1_000_0_1_0_10_0_00_1; // jalr
        default: controls = 13'bx_xxx_x_x_x_xx_x_xx_x; // ???
      endcase // case (op)
    
@@ -206,52 +210,115 @@ module aludec (input  logic       opb5,
    
 endmodule // aludec
 
-module datapath (input  logic        clk, reset,
-		 input  logic [1:0]  ResultSrc,
-		//  input  logic 	     PCSrc, ALUSrc, ASrc,
-     input logic [1:0] PCSel,
-     input logic       ALUSrc, ASrc,
-		 input  logic 	     RegWrite,
-		 input  logic [2:0]  ImmSrc,
-		 input  logic [3:0]  ALUControl,
-		 output logic 	     Zero,
-		 output logic [31:0] PC,
-		 input  logic [31:0] Instr,
-		 output logic [31:0] ALUResult, WriteData,
-		 input  logic [31:0] ReadData,
-     output logic        lt,
-     output logic        ltu);
-   
-   logic [31:0] 		     PCNext, PCPlus4, PCTarget;
-   logic [31:0] 		     ImmExt;
-   logic [31:0] 		     SrcA, SrcB;
-   logic [31:0] 		     Result;
-  //  logic                 ASrc;
-   logic [31:0]          SrcAReg;
+module datapath (
+    input  logic        clk, reset,
+    input  logic [1:0]  ResultSrc,
+    input  logic [1:0]  PCSel,
+    input  logic        ALUSrc, ASrc,
+    input  logic        RegWrite,
+    input  logic [2:0]  ImmSrc,
+    input  logic [2:0]  funct3,
+    input  logic [3:0]  ALUControl,
+    output logic        Zero,
+    output logic [31:0] PC,
+    input  logic [31:0] Instr,
+    output logic [31:0] ALUResult, WriteData,
+    input  logic [31:0] ReadData,
+    output logic        lt,
+    output logic        ltu);
+
+   logic [31:0] PCNext, PCPlus4, PCTarget;
+   logic [31:0] ImmExt;
+   logic [31:0] SrcA, SrcB;
+   logic [31:0] Result;
+   logic [31:0] SrcAReg;
+   logic [31:0] WriteDataRaw;
 
    logic [31:0] JalrTargetRaw, JalrTarget;
 
+   logic [31:0] LoadData;
+   logic [7:0]  LoadByte;
+   logic [15:0] LoadHalf;
+   logic [31:0] StoreDataWord;
+
    adder jalradd (SrcAReg, ImmExt, JalrTargetRaw);
    assign JalrTarget = {JalrTargetRaw[31:1], 1'b0};
-   
-   // next PC logic
-   flopr #(32) pcreg (clk, reset, PCNext, PC);
-   adder  pcadd4 (PC, 32'd4, PCPlus4);
-   adder  pcaddbranch (PC, ImmExt, PCTarget);
-  //  mux2 #(32)  pcmux (PCPlus4, PCTarget, PCSrc, PCNext);
-  //  logic [1:0] PCSel;
-   mux3 #(32) pcmux (PCPlus4, PCTarget, JalrTarget, PCSel, PCNext);
-   // register file logic
-   regfile  rf (clk, RegWrite, Instr[19:15], Instr[24:20],
-	       Instr[11:7], Result, SrcAReg, WriteData);
-   extend  ext (Instr[31:7], ImmSrc, ImmExt);
-   // ALU logic
-   mux2 #(32) srcamux (SrcAReg, PC, ASrc, SrcA);
-   mux2 #(32) srcbmux (WriteData, ImmExt, ALUSrc, SrcB);
-   alu  alu (SrcA, SrcB, ALUControl, ALUResult, Zero, lt, ltu);
-   mux3 #(32) resultmux (ALUResult, ReadData, PCPlus4,ResultSrc, Result);
 
-endmodule // datapath
+   assign LoadByte = ReadData[8*ALUResult[1:0] +: 8];
+   assign LoadHalf = ReadData[16*ALUResult[1]   +: 16];
+
+   always_comb begin
+      case (funct3)
+         3'b000: LoadData = {{24{LoadByte[7]}}, LoadByte};   // lb
+         3'b001: LoadData = {{16{LoadHalf[15]}}, LoadHalf};  // lh
+         3'b010: LoadData = ReadData;                        // lw
+         3'b100: LoadData = {24'b0, LoadByte};               // lbu
+         3'b101: LoadData = {16'b0, LoadHalf};               // lhu
+         default: LoadData = ReadData;
+      endcase
+   end
+
+    always_comb begin
+      case (funct3)
+
+        3'b000: begin // sb
+          StoreDataWord = 32'b0;
+          StoreDataWord[8*ALUResult[1:0] +: 8] = WriteDataRaw[7:0];
+        end
+
+        3'b001: begin // sh
+          StoreDataWord = 32'b0;
+          StoreDataWord[16*ALUResult[1] +: 16] = WriteDataRaw[15:0];
+        end
+
+        3'b010: begin // sw
+          StoreDataWord = WriteDataRaw;
+        end
+
+        default: begin
+          StoreDataWord = WriteDataRaw;
+        end
+
+      endcase
+    end
+
+   flopr #(32) pcreg (clk, reset, PCNext, PC);
+   adder pcadd4 (PC, 32'd4, PCPlus4);
+   adder pcaddbranch (PC, ImmExt, PCTarget);
+
+   mux3 #(32) pcmux (PCPlus4, PCTarget, JalrTarget, PCSel, PCNext);
+
+
+   regfile rf (
+      clk, RegWrite,
+      Instr[19:15], Instr[24:20],
+      Instr[11:7],
+      Result,
+      SrcAReg,
+      WriteDataRaw
+   );
+
+   extend ext (Instr[31:7], ImmSrc, ImmExt);
+
+   mux2 #(32) srcamux (SrcAReg, PC, ASrc, SrcA);
+   mux2 #(32) srcbmux (WriteDataRaw, ImmExt, ALUSrc, SrcB);
+
+   alu alu (
+      SrcA, SrcB, ALUControl,
+      ALUResult, Zero, lt, ltu
+   );
+
+   mux3 #(32) resultmux (
+      ALUResult,
+      LoadData,
+      PCPlus4,
+      ResultSrc,
+      Result
+   );
+
+   assign WriteData = StoreDataWord;
+
+endmodule
 
 module adder (input  logic [31:0] a, b,
 	      output logic [31:0] y);
