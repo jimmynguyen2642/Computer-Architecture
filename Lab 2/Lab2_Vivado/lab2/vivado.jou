@@ -3,10 +3,10 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Tue Mar 31 22:21:36 2026
-# Process ID: 20616
+# Start of session at: Wed Apr  1 13:48:57 2026
+# Process ID: 21324
 # Current directory: C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent8348 C:\Users\jinguye\Desktop\Computer-Architecture\Lab 2\Lab2_Vivado\lab2\lab2.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent3432 C:\Users\jinguye\Desktop\Computer-Architecture\Lab 2\Lab2_Vivado\lab2\lab2.xpr
 # Log file: C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/vivado.log
 # Journal file: C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2\vivado.jou
 # Running On: CEAT-ENDV350-03, OS: Windows, CPU Frequency: 2496 MHz, CPU Physical cores: 8, Host memory: 68426 MB
@@ -14,56 +14,10 @@
 start_gui
 open_project {C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.xpr}
 update_compile_order -fileset sources_1
-generate_target all [get_files  {{C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.srcs/sources_1/bd/design_1/design_1.bd}}]
-export_ip_user_files -of_objects [get_files {{C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.srcs/sources_1/bd/design_1/design_1.bd}}] -no_script -sync -force -quiet
-create_ip_run [get_files -of_objects [get_fileset sources_1] {{C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.srcs/sources_1/bd/design_1/design_1.bd}}]
-export_simulation -of_objects [get_files {{C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.srcs/sources_1/bd/design_1/design_1.bd}}] -directory {C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.ip_user_files/sim_scripts} -ip_user_files_dir {C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.ip_user_files} -ipstatic_source_dir {C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.ip_user_files/ipstatic} -lib_map_path [list {modelsim=C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.cache/compile_simlib/modelsim} {questa=C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.cache/compile_simlib/questa} {riviera=C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.cache/compile_simlib/riviera} {activehdl=C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
-launch_runs synth_1 -jobs 8
 add_files -norecurse {{C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/riscv_single.sv}}
 generate_target all [get_files  {{C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.srcs/sources_1/bd/design_1/design_1.bd}}]
 export_ip_user_files -of_objects [get_files {{C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.srcs/sources_1/bd/design_1/design_1.bd}}] -no_script -sync -force -quiet
 create_ip_run [get_files -of_objects [get_fileset sources_1] {{C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.srcs/sources_1/bd/design_1/design_1.bd}}]
 export_simulation -of_objects [get_files {{C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.srcs/sources_1/bd/design_1/design_1.bd}}] -directory {C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.ip_user_files/sim_scripts} -ip_user_files_dir {C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.ip_user_files} -ipstatic_source_dir {C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.ip_user_files/ipstatic} -lib_map_path [list {modelsim=C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.cache/compile_simlib/modelsim} {questa=C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.cache/compile_simlib/questa} {riviera=C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.cache/compile_simlib/riviera} {activehdl=C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+reset_run synth_1
 launch_runs synth_1 -jobs 8
-update_compile_order -fileset sources_1
-generate_target all [get_files  {{C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.srcs/sources_1/bd/design_1/design_1.bd}}]
-export_ip_user_files -of_objects [get_files {{C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.srcs/sources_1/bd/design_1/design_1.bd}}] -no_script -sync -force -quiet
-create_ip_run [get_files -of_objects [get_fileset sources_1] {{C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.srcs/sources_1/bd/design_1/design_1.bd}}]
-export_simulation -of_objects [get_files {{C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.srcs/sources_1/bd/design_1/design_1.bd}}] -directory {C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.ip_user_files/sim_scripts} -ip_user_files_dir {C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.ip_user_files} -ipstatic_source_dir {C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.ip_user_files/ipstatic} -lib_map_path [list {modelsim=C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.cache/compile_simlib/modelsim} {questa=C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.cache/compile_simlib/questa} {riviera=C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.cache/compile_simlib/riviera} {activehdl=C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
-launch_runs synth_1 -jobs 8
-wait_on_run synth_1
-launch_runs impl_1 -jobs 8
-wait_on_run impl_1
-launch_runs impl_1 -to_step write_bitstream -jobs 8
-wait_on_run impl_1
-open_hw_manager
-connect_hw_server -allow_non_jtag
-open_hw_target
-set_property PROGRAM.FILE {C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.runs/impl_1/design_1_wrapper.bit} [get_hw_devices xc7z020_1]
-set_property PROBES.FILE {C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.runs/impl_1/design_1_wrapper.ltx} [get_hw_devices xc7z020_1]
-set_property FULL_PROBES.FILE {C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.runs/impl_1/design_1_wrapper.ltx} [get_hw_devices xc7z020_1]
-current_hw_device [get_hw_devices xc7z020_1]
-refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
-display_hw_ila_data [ get_hw_ila_data hw_ila_data_1 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]]
-set_property PROBES.FILE {C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.runs/impl_1/design_1_wrapper.ltx} [get_hw_devices xc7z020_1]
-set_property FULL_PROBES.FILE {C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.runs/impl_1/design_1_wrapper.ltx} [get_hw_devices xc7z020_1]
-set_property PROGRAM.FILE {C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.runs/impl_1/design_1_wrapper.bit} [get_hw_devices xc7z020_1]
-program_hw_devices [get_hw_devices xc7z020_1]
-refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
-run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
-wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
-display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]]
-run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
-wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
-display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]]
-refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
-set_property PROBES.FILE {C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.runs/impl_1/design_1_wrapper.ltx} [get_hw_devices xc7z020_1]
-set_property FULL_PROBES.FILE {C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.runs/impl_1/design_1_wrapper.ltx} [get_hw_devices xc7z020_1]
-set_property PROGRAM.FILE {C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.runs/impl_1/design_1_wrapper.bit} [get_hw_devices xc7z020_1]
-program_hw_devices [get_hw_devices xc7z020_1]
-refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
-display_hw_ila_data [ get_hw_ila_data hw_ila_data_1 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]]
-run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
-wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]
-display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"u_ila_0"}]]
-save_wave_config {C:/Users/jinguye/Desktop/Computer-Architecture/Lab 2/Lab2_Vivado/lab2/lab2.hw/hw_1/wave/hw_ila_data_1/hw_ila_data_1.wcfg}
