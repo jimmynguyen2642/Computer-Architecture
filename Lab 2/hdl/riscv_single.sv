@@ -41,7 +41,8 @@ module testbench();
      begin
 	string memfilename;
         // memfilename = {"../riscvtest/riscvtest.memfile"};
-        memfilename = {"../testing/blt.memfile"};
+        // memfilename = {"../testing/blt.memfile"};
+        memfilename = {"../testing/auipc.memfile"};
         $readmemh(memfilename, dut.imem.RAM);
      end
 
@@ -84,12 +85,13 @@ module riscvsingle (input  logic        clk, reset,
    logic [1:0] 				ResultSrc;
    logic [2:0] 				ImmSrc;
    logic [3:0] 				ALUControl;
+   logic [1:0]        PCSel;
    
    controller c (Instr[6:0], Instr[14:12], Instr[30], Zero,
-		 ResultSrc, MemWrite, PCSrc,
+		 ResultSrc, MemWrite, 
 		 ALUSrc, ASrc, RegWrite, Jump,
-		 ImmSrc, ALUControl, lt, ltu);
-   datapath dp (clk, reset, ResultSrc, PCSrc,
+		 ImmSrc, ALUControl, lt, ltu, PCSel);
+   datapath dp (clk, reset, ResultSrc, PCSel,
 		ALUSrc, ASrc, RegWrite,
 		ImmSrc, ALUControl,
 		Zero, PC, Instr,
@@ -103,12 +105,13 @@ module controller (input  logic [6:0] op,
 		   input  logic       Zero,
 		   output logic [1:0] ResultSrc,
 		   output logic       MemWrite,
-		   output logic       PCSrc, ALUSrc,ASrc,
+		   output logic       ALUSrc,ASrc,
 		   output logic       RegWrite, Jump,
 		   output logic [2:0] ImmSrc,
 		   output logic [3:0] ALUControl,
        input  logic       lt,
-       input  logic       ltu);
+       input  logic       ltu,
+       output logic [1:0] PCSel);
    
    logic [1:0] 			      ALUOp;
    logic 			      Branch;
@@ -118,10 +121,25 @@ module controller (input  logic [6:0] op,
    aludec ad (op[5], funct3, funct7b5, ALUOp, ALUControl);
   //  assign PCSrc = Branch & ((Zero ^ funct3[0]) & (!funct3[2] ^ !funct3[1])) | 
   //                 ((funct3[2] & !funct3[1]) & (funct3[0] ^ lt)) | Jump;
-    assign PCSrc = Branch & ((Zero ^ funct3[0]) & (!funct3[2] ^ !funct3[1])) | 
-                    ((funct3[2] & !funct3[1]) & (funct3[0] ^ lt)) | 
-                    ((funct3[2] & funct3[1]) & (funct3[0] ^ ltu)) | Jump;
-   
+    // assign PCSrc = Branch & ((Zero ^ funct3[0]) & (!funct3[2] ^ !funct3[1])) | 
+    //                 ((funct3[2] & !funct3[1]) & (funct3[0] ^ lt)) | 
+    //                 ((funct3[2] & funct3[1]) & (funct3[0] ^ ltu)) | Jump;
+  //  assign PCSrc =
+  //   (Branch & ~funct3[2] & (Zero ^ funct3[0])) |
+  //   (Branch &  funct3[2] & ~funct3[1] & (lt  ^ funct3[0])) |
+  //   (Branch &  funct3[2] &  funct3[1] & (ltu ^ funct3[0])) |
+  //   Jump;
+  always_comb begin
+    if (Jump && op == 7'b1100111)
+      PCSel = 2'b10; // jalr
+    else if ((Branch & ~funct3[2] & (Zero ^ funct3[0])) |
+            (Branch &  funct3[2] & ~funct3[1] & (lt  ^ funct3[0])) |
+            (Branch &  funct3[2] &  funct3[1] & (ltu ^ funct3[0])) |
+            Jump)
+      PCSel = 2'b01; // branch/jal
+    else
+      PCSel = 2'b00; // PC+4
+  end
 endmodule // controller
 
 module maindec (input  logic [6:0] op,
@@ -148,6 +166,7 @@ module maindec (input  logic [6:0] op,
        7'b0110111: controls = 13'b1_100_0_1_0_00_0_11_0; // lui
        7'b1100011: controls = 13'b0_010_0_0_0_00_1_01_0; // branch
        7'b1101111: controls = 13'b1_011_0_0_0_10_0_00_1; // jal
+       7'b1100111: controls = 13'b1_000_0_0_0_00_0_10_1; // jalr
        default: controls = 13'bx_xxx_x_x_x_xx_x_xx_x; // ???
      endcase // case (op)
    
@@ -189,7 +208,9 @@ endmodule // aludec
 
 module datapath (input  logic        clk, reset,
 		 input  logic [1:0]  ResultSrc,
-		 input  logic 	     PCSrc, ALUSrc, ASrc,
+		//  input  logic 	     PCSrc, ALUSrc, ASrc,
+     input logic [1:0] PCSel,
+     input logic       ALUSrc, ASrc,
 		 input  logic 	     RegWrite,
 		 input  logic [2:0]  ImmSrc,
 		 input  logic [3:0]  ALUControl,
@@ -208,19 +229,25 @@ module datapath (input  logic        clk, reset,
   //  logic                 ASrc;
    logic [31:0]          SrcAReg;
 
+   logic [31:0] JalrTargetRaw, JalrTarget;
+
+   adder jalradd (SrcAReg, ImmExt, JalrTargetRaw);
+   assign JalrTarget = {JalrTargetRaw[31:1], 1'b0};
    
    // next PC logic
    flopr #(32) pcreg (clk, reset, PCNext, PC);
    adder  pcadd4 (PC, 32'd4, PCPlus4);
    adder  pcaddbranch (PC, ImmExt, PCTarget);
-   mux2 #(32)  pcmux (PCPlus4, PCTarget, PCSrc, PCNext);
+  //  mux2 #(32)  pcmux (PCPlus4, PCTarget, PCSrc, PCNext);
+  //  logic [1:0] PCSel;
+   mux3 #(32) pcmux (PCPlus4, PCTarget, JalrTarget, PCSel, PCNext);
    // register file logic
    regfile  rf (clk, RegWrite, Instr[19:15], Instr[24:20],
 	       Instr[11:7], Result, SrcAReg, WriteData);
    extend  ext (Instr[31:7], ImmSrc, ImmExt);
    // ALU logic
    mux2 #(32) srcamux (SrcAReg, PC, ASrc, SrcA);
-   mux2 #(32)  srcbmux (WriteData, ImmExt, ALUSrc, SrcB);
+   mux2 #(32) srcbmux (WriteData, ImmExt, ALUSrc, SrcB);
    alu  alu (SrcA, SrcB, ALUControl, ALUResult, Zero, lt, ltu);
    mux3 #(32) resultmux (ALUResult, ReadData, PCPlus4,ResultSrc, Result);
 
@@ -372,7 +399,8 @@ module alu (input  logic [31:0] a, b,
    assign neg = result[31];
    assign asign = a[31];
    assign bsign = b[31];
-   assign lt = (asign & ~bsign) | (asign & neg) | (~bsign & neg);
+  //  assign lt = (asign & ~bsign) | (asign & neg) | (~bsign & neg);
+   assign lt = sum[31] ^ v;
    assign v = ~(alucontrol[0] ^ a[31] ^ b[31]) & (a[31] ^ sum[31]) & isAddSub;
    
 endmodule // alu
