@@ -1,6 +1,6 @@
-# do riscv_single.do
+# do {.\riscv_single.do}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:53:02 on Mar 31,2026
+# Start time: 14:01:59 on Apr 01,2026
 # vlog -reportprogress 300 riscv_single.sv 
 # -- Compiling module testbench
 # -- Compiling module riscvsingle
@@ -23,10 +23,10 @@
 # Top level modules:
 # 	testbench
 # 	flopenr
-# End time: 21:53:02 on Mar 31,2026, Elapsed time: 0:00:00
+# End time: 14:01:59 on Apr 01,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vsim -debugdb -voptargs="+acc" work.testbench 
-# Start time: 21:53:03 on Mar 31,2026
+# Start time: 14:02:02 on Apr 01,2026
 # Loading sv_std.std
 # Loading work.testbench
 # Loading work.top
@@ -48,12 +48,17 @@
 # It appears vopt was not run with -debugdb option on this design.
 # Advanced Causality and Schematic debug features will not be available.
 # ** Error: (vsim-8357) Internal debugDB error id:ct1  ret:1 table context_tbl already exists
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: JMAMA  Hostname: DESKTOP-06F4FTN  ProcessID: 24056
+#           Attempting to use alternate WLF file "./wlft0yn9ce".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlft0yn9ce
 # Simulation succeeded
 # ** Note: $stop    : riscv_single.sv(67)
 #    Time: 195 ps  Iteration: 1  Instance: /testbench
 # Break in Module testbench at riscv_single.sv line 67
 # ** Error: add: bad option "schematic": must be dataflow, list, log, memory, message, testbrowser, watch, wave
-# Error in macro ./riscv_single.do line 86
+# Error in macro ././riscv_single.do line 86
 # add: bad option "schematic": must be dataflow, list, log, memory, message, testbrowser, watch, wave
 #     while executing
 # "add schematic -full sim:/testbench/dut/rv32single"

@@ -10,7 +10,7 @@ cModel Technology
 Z0 dC:/Users/JMAMA/Documents/Computer Architecture/Lab 2/hdl
 vadder
 Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-Z2 !s110 1775011982
+Z2 !s110 1775070119
 !i10b 1
 !s100 G7C?J>4V1DzXfZ?oVI:Dn1
 IgZh:3bJ1OkY[^U74d>GYR3
@@ -26,7 +26,7 @@ Z8 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z9 !s108 1775011982.000000
+Z9 !s108 1775070119.000000
 Z10 !s107 riscv_single.sv|
 Z11 !s90 -reportprogress|300|riscv_single.sv|
 !i113 1
