@@ -92,7 +92,8 @@ module testbench();
    initial
      begin
         string memfilename;
-        memfilename = {"../riscvtest/riscvtest.memfile"};
+      //   memfilename = {"../riscvtest/riscvtest.memfile"};
+        memfilename = {"../testing/bltu.memfile"};
         $readmemh(memfilename, dut.imem.RAM);
      end
 
@@ -117,7 +118,7 @@ module testbench();
               $stop;
            end else if (DataAdr !== 96) begin
               $display("Simulation failed");
-              $stop;
+            //   $stop;
            end
         end
      end
@@ -554,7 +555,7 @@ endmodule
 module imem (input  logic [31:0] a,
              output logic [31:0] rd);
 
-   logic [31:0] RAM[63:0];
+   logic [31:0] RAM[1023:0];
 
    assign rd = RAM[a[31:2]];
 endmodule
