@@ -92,8 +92,9 @@ module testbench();
    initial
      begin
         string memfilename;
-      //   memfilename = {"../riscvtest/riscvtest.memfile"};
-        memfilename = {"../testing/bltu.memfile"};
+        memfilename = {"../riscvtest/riscvtest.memfile"};
+        // memfilename = {"../testing/bltu.memfile"};
+        // memfilename = {"../riscvtest/pipe-test.memfile"};
         $readmemh(memfilename, dut.imem.RAM);
      end
 
