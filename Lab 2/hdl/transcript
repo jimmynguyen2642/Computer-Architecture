@@ -1,25 +1,8 @@
-<<<<<<< HEAD
-# //  ModelSim SE-64 2021.3 Jul 13 2021
-# //
-# //  Copyright 1991-2021 Mentor Graphics Corporation
-# //  All Rights Reserved.
-# //
-# //  ModelSim SE-64 and its associated documentation contain trade
-# //  secrets and commercial or financial information that are the property of
-# //  Mentor Graphics Corporation and are privileged, confidential,
-# //  and exempt from disclosure under the Freedom of Information Act,
-# //  5 U.S.C. Section 552. Furthermore, this information
-# //  is prohibited from disclosure under the Trade Secrets Act,
-# //  18 U.S.C. Section 1905.
-# //
 # do riscv_single.do
-# Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
-# Start time: 13:41:11 on Mar 25,2026
-=======
-# do {.\riscv_single.do}
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is adyance@CEAT-ENDV350-03.
+# ** Warning: (vlib-34) Library already exists at "work".
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 14:01:59 on Apr 01,2026
->>>>>>> 729620c9751550b1e98ef5983733cea47f674d8b
+# Start time: 09:28:49 on Apr 27,2026
 # vlog -reportprogress 300 riscv_single.sv 
 # -- Compiling module testbench
 # -- Compiling module riscvsingle
@@ -42,36 +25,10 @@
 # Top level modules:
 # 	testbench
 # 	flopenr
-<<<<<<< HEAD
-# End time: 13:41:11 on Mar 25,2026, Elapsed time: 0:00:00
+# End time: 09:28:49 on Apr 27,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vsim -debugdb -voptargs="+acc" work.testbench 
-# Start time: 13:41:11 on Mar 25,2026
-# ** Note: (vsim-3812) Design is being optimized...
-# ** Note: (vsim-8611) Generating debug db.
-# ** Note: (vopt-4301) Memory core inferred for signal 'RAM' width=32, depth=256, type=RAM at location riscv_single.sv:304
-# Loading sv_std.std
-# Loading work.testbench(fast)
-# Loading work.top(fast)
-# Loading work.riscvsingle(fast)
-# Loading work.controller(fast)
-# Loading work.maindec(fast)
-# Loading work.aludec(fast)
-# Loading work.datapath(fast)
-# Loading work.flopr(fast)
-# Loading work.adder(fast)
-# Loading work.mux2(fast)
-# Loading work.regfile(fast)
-# Loading work.extend(fast)
-# Loading work.alu(fast)
-# Loading work.mux3(fast)
-# Loading work.imem(fast)
-# Loading work.dmem(fast)
-=======
-# End time: 14:01:59 on Apr 01,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# vsim -debugdb -voptargs="+acc" work.testbench 
-# Start time: 14:02:02 on Apr 01,2026
+# Start time: 09:28:50 on Apr 27,2026
 # Loading sv_std.std
 # Loading work.testbench
 # Loading work.top
@@ -89,32 +46,19 @@
 # Loading work.alu
 # Loading work.imem
 # Loading work.dmem
->>>>>>> 729620c9751550b1e98ef5983733cea47f674d8b
 # ** Note: (vsim-8900) Creating design debug database vsim.dbg.
+# It appears vopt was not run with -debugdb option on this design.
+# Advanced Causality and Schematic debug features will not be available.
 # ** Error: (vsim-8357) Internal debugDB error id:ct1  ret:1 table context_tbl already exists
-<<<<<<< HEAD
-# ** Warning: (vsim-PLI-3407) Too many data words read on line 65 of file "../testing/bne.memfile". (Current address [64], address range [0:63])    : riscv_single.sv(45)
-#    Time: 0 ns  Iteration: 0  Instance: /testbench
-# Debug data file does not match loaded design.
-# Debug data file does not match loaded design.
-# ** Error: Could not open the database because of the following problem accessing the required debug information:
-# Debug data file does not match loaded design.
-# Error in macro ./riscv_single.do line 86
-# Could not open the database because of the following problem accessing the required debug information:
-# Debug data file does not match loaded design.
-=======
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by: JMAMA  Hostname: DESKTOP-06F4FTN  ProcessID: 24056
-#           Attempting to use alternate WLF file "./wlft0yn9ce".
+#           File in use by: adyance  Hostname: CEAT-ENDV350-03  ProcessID: 5928
+#           Attempting to use alternate WLF file "./wlftnfe9e7".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlft0yn9ce
-# Simulation succeeded
-# ** Note: $stop    : riscv_single.sv(67)
-#    Time: 195 ps  Iteration: 1  Instance: /testbench
-# Break in Module testbench at riscv_single.sv line 67
+#           Using alternate file: ./wlftnfe9e7
 # ** Error: add: bad option "schematic": must be dataflow, list, log, memory, message, testbrowser, watch, wave
-# Error in macro ././riscv_single.do line 86
+# Error in macro ./riscv_single.do line 86
 # add: bad option "schematic": must be dataflow, list, log, memory, message, testbrowser, watch, wave
->>>>>>> 729620c9751550b1e98ef5983733cea47f674d8b
 #     while executing
 # "add schematic -full sim:/testbench/dut/rv32single"
+# End time: 09:42:21 on Apr 27,2026, Elapsed time: 0:13:31
+# Errors: 4, Warnings: 2
